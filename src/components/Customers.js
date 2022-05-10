@@ -19,24 +19,7 @@ export default function Customers(){
         .then(data => setCustomers(data.content))
         .catch((err) => console.error(err));
     }
-
-    const addCustomer = (customer) => {
-      fetch('https://customerrest.herokuapp.com/api/customers',{
-        method: 'POST',
-        headers: {'Content-type':'application/json'},
-        body: JSON.stringify(customer)
-      })
-      .then(response => {
-        if (response.ok) {
-          fetchCustomers();
-        }
-        else {
-          alert('Something went wrong when adding customer');
-        }
-      })
-      .catch(err => console.error(err))
-    }
-
+    
     const columns = [
         { field: 'firstname', sortable: true, filter: true , width: 140 },
         { field: 'lastname', sortable: true, filter: true, width: 140 },
