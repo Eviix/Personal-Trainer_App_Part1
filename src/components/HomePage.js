@@ -1,12 +1,15 @@
 import '../App.css';
 
 
-function HomePage() {
+
+export default function HomePage() {
     return (
     <div>
-        <h1>Welcome to the home page</h1>
+        <h1>Welcome to the home page of personal trainer application</h1>
         <p>The website is still under development</p>
+        
     </div>);
 }
 
-export default HomePage;
+
+

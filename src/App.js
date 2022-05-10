@@ -1,28 +1,40 @@
 import './App.css';
-import HomePage from './pages/HomePage';
-import Training from './pages/Training';
-import Customer from './pages/Customer';
+import HomePage from './components/HomePage';
+import Trainings from './components/Trainings';
+import Customers from './components/Customers';
+import {NavBar} from "./components/Navbar";
 import React, { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
-function App() {
+export default function App() {
     const [value, setValue] = useState('HomePage');
     const handleTabChange = (event, value) => {
         setValue(value);
     };
 
     return (
+        
+    
       <div className="App">
+
+        <React.Fragment>
+            <NavBar/>
+        </React.Fragment>
+        
+        
           <Tabs value={value} onChange={handleTabChange}>
               <Tab value="HomePage" label="Home" />
-              <Tab value="customer" label="Customer" />
-              <Tab value="training" label="Training" />
+              <Tab value="customers" label="Customers" />
+              <Tab value="trainings" label="Trainings" />
           </Tabs>
           {value === 'HomePage' && <HomePage />}
-          {value === 'customer' && <Customer />}
-          {value === 'training' && <Training />}
+          {value === 'customers' && <Customers />}
+          {value === 'trainings' && <Trainings />}
+          
+          
       </div>);
   }
   
-  export default App;
+  
+  
