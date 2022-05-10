@@ -12,10 +12,10 @@ export default function Trainings(){
     const [msg, setMsg] = useState('');
    
     useEffect(() => {
-        getTrainings();
+        fetchTrainings();
     }, []);
     
-    const getTrainings = () => {
+    const fetchTrainings = () => {
         fetch('https://customerrest.herokuapp.com/api/trainings')
         .then((response) => response.json())
         .then(data => setTrainings(data.content))

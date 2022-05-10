@@ -4,20 +4,37 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import Snackbar from '@mui/material/Snackbar';
 
-export default function Trainings(){
+export default function Customers(){
     const [customers, setCustomers] = useState([]);
     const [open, setOpen] = React.useState(false);
     const [msg, setMsg] = useState('');
 
     useEffect(() => {
-        getTrainings();
+      fetchCustomers();
     }, []);
     
-    const getTrainings = () => {
+    const fetchCustomers = () => {
         fetch('https://customerrest.herokuapp.com/api/customers')
         .then((response) => response.json())
         .then(data => setCustomers(data.content))
         .catch((err) => console.error(err));
+    }
+
+    const addCustomer = (customer) => {
+      fetch('https://customerrest.herokuapp.com/api/customers',{
+        method: 'POST',
+        headers: {'Content-type':'application/json'},
+        body: JSON.stringify(customer)
+      })
+      .then(response => {
+        if (response.ok) {
+          fetchCustomers();
+        }
+        else {
+          alert('Something went wrong when adding customer');
+        }
+      })
+      .catch(err => console.error(err))
     }
 
     const columns = [
